@@ -1,0 +1,8 @@
+﻿Microsoft.EnttyFrameworkCore
+Microsoft.EnttyFrameworkCore.Tools
+Instalei as versoes 5 (última) dos pacotes acima pois a 6 deu erro
+
+PM> Add-Migration "initial-create"
+PM> update-database
+
+add/controller/ api/ Api controller with Actions. Using Entity Framework
