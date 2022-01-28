@@ -20,7 +20,7 @@ namespace EmployeeRegister.Models
         public string Occupation { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
-        public string Image { get; set; }
+        public string ImageName { get; set; }
        
         [NotMapped]  // Indica que o campo não tem correspondente no BD
         public IFormFile ImageFile { get; set; }

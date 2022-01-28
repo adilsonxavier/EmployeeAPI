@@ -3,14 +3,16 @@ using EmployeeRegister.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeRegister.Migrations
 {
     [DbContext(typeof(EmployeeDBContext))]
-    partial class EmployeeDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220127173827_changeimageName")]
+    partial class changeimageName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,7 +40,6 @@ namespace EmployeeRegister.Migrations
 
                     b.ToTable("Employees");
                 });
-           
 #pragma warning restore 612, 618
         }
     }

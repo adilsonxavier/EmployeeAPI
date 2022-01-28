@@ -81,7 +81,7 @@ namespace EmployeeRegister.Controllers
         [HttpPost]
         public async Task<ActionResult<Employee>> PostEmployee([FromForm]Employee employee)
         {
-            employee.Image = await SaveImage(employee.ImageFile);
+            employee.ImageName = await SaveImage(employee.ImageFile);
             _context.Employees.Add(employee);
             await _context.SaveChangesAsync();
 
