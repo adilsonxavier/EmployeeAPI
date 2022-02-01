@@ -28,7 +28,20 @@ namespace EmployeeRegister.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
         {
-            return await _context.Employees.ToListAsync();
+            return await _context.Employees
+                .Select(x => new Employee()
+                {
+                    EmployeeId =x.EmployeeId,
+                    EmployeeName = x.EmployeeName,
+                    Occupation = x.Occupation,
+                    ImageName = x.ImageName,
+                    //O Request.PathBase retorna "". Ele e usado para quando é configurado um nome adicional no Startup.Configure
+                    //Adding app.usePathBase("/mysite1") one needs to call /mysite1/api/items instead of /api/items
+                    ImageSrc = String.Format("{0}://{1}{2}/images/{3}",Request.Scheme,Request.Host,Request.PathBase,
+                            (from c in _context.Fotos where c.EmployeeId == x.EmployeeId orderby c.Position select c.ImageName).FirstOrDefault()
+                       )
+                })
+                .ToListAsync();
         }
 
         // GET: api/Employee/5
@@ -48,11 +61,17 @@ namespace EmployeeRegister.Controllers
         // PUT: api/Employee/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmployee(int id, Employee employee)
+        public async Task<IActionResult> PutEmployee(int id, [FromForm]Employee employee)
         {
             if (id != employee.EmployeeId)
             {
                 return BadRequest();
+            }
+           
+            if(employee.ImageFile != null)
+            {
+                DeleteImage(employee.ImageName);
+                employee.ImageName =await SaveImage(employee.ImageFile);
             }
 
             _context.Entry(employee).State = EntityState.Modified;
@@ -103,6 +122,9 @@ namespace EmployeeRegister.Controllers
                 return NotFound();
             }
 
+            DeleteImage(employee.ImageName); // Posso deletar direto sem checar se existe a imagem
+
+
             _context.Employees.Remove(employee);
             await _context.SaveChangesAsync();
 
@@ -133,6 +155,15 @@ namespace EmployeeRegister.Controllers
                await  imageFile.CopyToAsync(fileStream);
             }
             return imageName;
+        }
+
+        public void DeleteImage(string imageName)
+        {
+            var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "images", imageName);
+            if (System.IO.File.Exists(imagePath))
+            {
+                System.IO.File.Delete(imagePath);
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0kgvxGTSO/1iqHgZ2LULjmLS/co6SzAxzh2SVzq6kUcZ0bPY+zExvo9WpBwbQOa/ibTTBYlJUNvCYljewU6E1A==",
+  "dgSpecHash": "dlFu8OPQxWpbLqzjWXybrV4pzcXcdfoEatbVmCoiMphoSXqyQ53LlWOT/SO3bIGcDCPvvJOGCmMGSp1cKN8bhA==",
   "success": true,
   "projectFilePath": "C:\\Tito\\Aprendizado\\REACT e JS PROJECTS\\EmployeeRegister\\EmployeeRegister.csproj",
   "expectedPackageFiles": [
@@ -28,8 +28,8 @@
     "C:\\Users\\adils\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.13\\microsoft.entityframeworkcore.analyzers.5.0.13.nupkg.sha512",
     "C:\\Users\\adils\\.nuget\\packages\\microsoft.entityframeworkcore.design\\5.0.13\\microsoft.entityframeworkcore.design.5.0.13.nupkg.sha512",
     "C:\\Users\\adils\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.13\\microsoft.entityframeworkcore.relational.5.0.13.nupkg.sha512",
-    "C:\\Users\\adils\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\5.0.13\\microsoft.entityframeworkcore.sqlserver.5.0.13.nupkg.sha512",
-    "C:\\Users\\adils\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\5.0.13\\microsoft.entityframeworkcore.tools.5.0.13.nupkg.sha512",
+    "C:\\Users\\adils\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\5.0.12\\microsoft.entityframeworkcore.sqlserver.5.0.12.nupkg.sha512",
+    "C:\\Users\\adils\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\5.0.12\\microsoft.entityframeworkcore.tools.5.0.12.nupkg.sha512",
     "C:\\Users\\adils\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\adils\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\adils\\.nuget\\packages\\microsoft.extensions.caching.memory\\5.0.0\\microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",

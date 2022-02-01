@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmployeeRegister.Migrations
 {
     [DbContext(typeof(EmployeeDBContext))]
-    [Migration("20220125124332_initial-create")]
-    partial class initialcreate
+    [Migration("20220129163729_fotos3")]
+    partial class fotos3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,7 +30,7 @@ namespace EmployeeRegister.Migrations
                     b.Property<string>("EmployeeName")
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Image")
+                    b.Property<string>("ImageName")
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Occupation")
@@ -38,7 +38,7 @@ namespace EmployeeRegister.Migrations
 
                     b.HasKey("EmployeeId");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Employee");
                 });
 #pragma warning restore 612, 618
         }

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmployeeRegister.Migrations
 {
     [DbContext(typeof(EmployeeDBContext))]
-    [Migration("20220127173827_changeimageName")]
-    partial class changeimageName
+    [Migration("20220129164904_fotosfk")]
+    partial class fotosfk
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,6 +39,43 @@ namespace EmployeeRegister.Migrations
                     b.HasKey("EmployeeId");
 
                     b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("EmployeeRegister.Models.Foto", b =>
+                {
+                    b.Property<int>("FotoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FotoName")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("Position")
+                        .HasColumnType("int");
+
+                    b.HasKey("FotoId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("Fotos");
+                });
+
+            modelBuilder.Entity("EmployeeRegister.Models.Foto", b =>
+                {
+                    b.HasOne("EmployeeRegister.Models.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
                 });
 #pragma warning restore 612, 618
         }

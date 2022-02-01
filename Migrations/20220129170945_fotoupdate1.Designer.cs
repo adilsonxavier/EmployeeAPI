@@ -3,14 +3,16 @@ using EmployeeRegister.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeRegister.Migrations
 {
     [DbContext(typeof(EmployeeDBContext))]
-    partial class EmployeeDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220129170945_fotoupdate1")]
+    partial class fotoupdate1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,36 +67,6 @@ namespace EmployeeRegister.Migrations
                     b.ToTable("Fotos");
                 });
 
-            modelBuilder.Entity("EmployeeRegister.Models.Skill", b =>
-                {
-                    b.Property<int>("SkillId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("SkillName")
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("SkillId");
-
-                    b.ToTable("Skills");
-                });
-
-            modelBuilder.Entity("EmployeeRegister.Models.SkillEmployee", b =>
-                {
-                    b.Property<int>("SkillId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("SkillId", "EmployeeId");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.ToTable("SkillEmployees");
-                });
-
             modelBuilder.Entity("EmployeeRegister.Models.Foto", b =>
                 {
                     b.HasOne("EmployeeRegister.Models.Employee", "Employee")
@@ -104,35 +76,6 @@ namespace EmployeeRegister.Migrations
                         .IsRequired();
 
                     b.Navigation("Employee");
-                });
-
-            modelBuilder.Entity("EmployeeRegister.Models.SkillEmployee", b =>
-                {
-                    b.HasOne("EmployeeRegister.Models.Employee", "Employee")
-                        .WithMany("SkillEmployees")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("EmployeeRegister.Models.Skill", "Skill")
-                        .WithMany("SkillEmployees")
-                        .HasForeignKey("SkillId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Employee");
-
-                    b.Navigation("Skill");
-                });
-
-            modelBuilder.Entity("EmployeeRegister.Models.Employee", b =>
-                {
-                    b.Navigation("SkillEmployees");
-                });
-
-            modelBuilder.Entity("EmployeeRegister.Models.Skill", b =>
-                {
-                    b.Navigation("SkillEmployees");
                 });
 #pragma warning restore 612, 618
         }
